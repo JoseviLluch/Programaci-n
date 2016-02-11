@@ -156,12 +156,40 @@ public class Alumno {
         }catch (ClassNotFoundException e){
             System.out.println("CLASS NOT FOUND MADAFACKA");
             System.out.println(e.getMessage ());
+        }   
+    }    
+      //Metodo pasarFichero: 
+    public void volcar(){
+        DataOutputStream d=null;
+        BufferedOutputStream b=null;
+        FileOutputStream f=null;
+        try{
+            f=new FileOutputStream("alumnos5.dat");
+            b=new BufferedOutputStream(f);
+            d=new DataOutputStream(b);
+            System.out.println("BUSCANDO ALUMNOS APROBADOS");    
+            for(int i=0;i<lista.size();i++){
+           double media=((lista.get(i).getNota_1()+lista.get(i).getNota_2()+lista.get(i).getNota_3())/3);
+           if (media>5){
+               System.out.println("ALUMNO MEDIA 5 ENCONTRADO");
+               d.writeChars(lista.get(i).carnet+" "+media);
+            }
+       } 
+            d.close();
+        }catch (FileNotFoundException e){
+            System.out.println("FAIL: FICHERO NOT FOUND");
+            System.out.println(e.getMessage());
+        }catch (IOException e){
+            System.out.println("FAIL READING FICHERO");
+            System.out.println(e.getMessage());
+        }catch (Exception e){
+            System.out.println("FAIL GENERATING FICHERO");
+            System.out.println(e.getMessage());
+        }
+        
+        
+       
     }
-        //Metodo pasarFichero:
-        
-        
-        
-}
     
 
     

@@ -10,7 +10,7 @@ package Excepciones2;
  * @author mati
  */
 public class Ej1 {
-
+    
     public static void main(String[] args) {
         try {
             System.out.println("Mensaje mostrado por pantalla");
