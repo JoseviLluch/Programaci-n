@@ -29,8 +29,6 @@ media es mayor que 5 en un fichero alumnos5.dat.
 7.- Guardar en alumnos.dat.
 8.- Salir
 
-package fichero_alumnos;
-
 /**
  *
  * @author mati
@@ -185,11 +183,58 @@ public class Alumno {
         }catch (Exception e){
             System.out.println("FAIL GENERATING FICHERO");
             System.out.println(e.getMessage());
+        }  
+    }
+    //Metodo visualizar fichero
+    public void leerFichero5() {
+        FileInputStream f = null;
+        BufferedInputStream b = null;
+        DataInputStream dat = null;
+        try {
+            f = new FileInputStream("alumnos5.dat");
+            b = new BufferedInputStream(f);
+            dat = new DataInputStream(b);
+
+            while (true) {
+                String dni = dat.readUTF();
+                double media = dat.readDouble();
+
+                System.out.println("DNI: " + dni + "\t" + "Media " + media);
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("FAIL FILE NOT FOUND");
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println("FICHERO END");
+            //System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("FICHERO FAIL");
+            System.out.println(e.getMessage());
         }
-        
-        
+    }
+    public void buscar(){
+        System.out.println("Introduce el nombre a buscar");
+        String nombre =scan.nextLine();
+        System.out.println("SEARCHING ALUMNO");
+        int contador=0;
        
     }
+    //- Método: main(). Hacer un programa con el siguiente menú:
+//1.- Introducir datos.
+//2.- Buscar (por nombre, visualizar todos los objetos que tengan el mismo nombre).
+//3.- Modificar.
+//4.- Borrar (Buscar por carnet y borrar).
+//5.- Guardar aprobados (en fichero alumnos5.dat)
+//6.- Visualizar aprobados.
+//7.- Guardar en alumnos.dat.
+//8.- Salir
+    public static void main(String[] args) {
+        
+    }
+        
+    
+
     
 
     
